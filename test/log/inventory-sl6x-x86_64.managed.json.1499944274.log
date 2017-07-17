@@ -1,0 +1,388 @@
+[1;32mopenstack output will be in this color.[0m
+
+[1;32m==> openstack: Discovering enabled extensions...[0m
+[1;32m==> openstack: Loading flavor: m1.tiny[0m
+[0;32m    openstack: Verified flavor. ID: 1[0m
+[1;32m==> openstack: Creating temporary keypair: packer 59675555-6b1b-366d-41c7-bc4ae02ed0f8 ...[0m
+[1;32m==> openstack: Created temporary keypair: packer 59675555-6b1b-366d-41c7-bc4ae02ed0f8[0m
+[1;32m==> openstack: Successfully converted BER encoded SSH key to DER encoding.[0m
+[1;32m==> openstack: Launching server...[0m
+[0;32m    openstack: Server ID: 6af7ac3c-bdc5-437f-bd92-8aa663ce56b5[0m
+[1;32m==> openstack: Waiting for server to become ready...[0m
+[1;32m==> openstack: Waiting for SSH to become available...[0m
+[1;32m==> openstack: Connected to SSH![0m
+[1;32m==> openstack: Uploading /etc/packer-utils/templates/update_ccm_managed.sh => /root/update_ccm_managed.sh[0m
+[1;32m==> openstack: Provisioning with shell script: /tmp/packer-shell702416730[0m
+[0;32m    openstack: Starting ccm update script, waiting for network[0m
+[0;32m    openstack: Server:		130.246.72.21[0m
+[0;32m    openstack: Address:	130.246.72.21#53[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: 17.186.246.130.in-addr.arpa	name = vm545.nubes.stfc.ac.uk.[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: Got hostname vm545.nubes.stfc.ac.uk[0m
+[0;32m    openstack: Fetching profile[0m
+[0;32m    openstack: [INFO] No existing cache /var/lib/ccm/data/aHR0cDovL2FxdWlsb24uZ3JpZHBwLnJsLmFjLnVrL3Byb2ZpbGVzL3ZtNTQ1Lm51YmVzLnN0ZmMuYWMudWsuanNvbg==, not specifying the modification date while retrieving[0m
+[0;32m    openstack: [INFO] Profile updated, new latest CID 5 name prod-domain[0m
+[0;32m    openstack: Running quattor configure[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] NCM-NCD version 17.2.0 started by root at: Thu Jul 13 12:12:19 2017[0m
+[0;32m    openstack: [INFO] Using profile CID 5 name prod-domain[0m
+[0;32m    openstack: [INFO] No components specified, getting all active ones.[0m
+[0;32m    openstack: [INFO] executing configure on components....[0m
+[0;32m    openstack:[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: spma[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component spma executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/sl-6x-x86_64-os.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/sl-6x-x86_64-security.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/tier1-sl6-local.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/tier1-sl6-local.pkgs[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/epel-6-x86_64.repo[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: syslog[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: Files /etc/rsyslog.conf.new and /etc/rsyslog.conf differ[0m
+[0;32m    openstack: updated /etc/sysconfig/rsyslog[0m
+[0;32m    openstack: Shutting down system logger: [  OK  ][0m
+[0;32m    openstack: Starting system logger: [  OK  ][0m
+[0;32m    openstack: [INFO] configure on component syslog executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: sysctl[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component sysctl executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: symlink[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component symlink executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: ssh[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: Stopping sshd: [  OK  ][0m
+[0;32m    openstack: Starting sshd: [  OK  ][0m
+[0;32m    openstack: [INFO] configure on component ssh executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: ssh modified file /etc/ssh/sshd_config[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: resolver[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: updated /etc/resolv.conf[0m
+[0;32m    openstack: changed mode(00444) of /etc/resolv.conf[0m
+[0;32m    openstack: [INFO] configure on component resolver executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: pam[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component pam executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: ntpd[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component ntpd executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: modprobe[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component modprobe executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: metaconfig[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] File /etc/sysconfig/healthcheck updated[0m
+[0;32m    openstack: [INFO] configure on component metaconfig executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: metaconfig modified file /etc/sysconfig/healthcheck[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: filecopy[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Checking file /etc/bash_completion.d/quattor...[0m
+[0;32m    openstack: [INFO] Checking file /etc/cron.d/0hourly...[0m
+[0;32m    openstack: [INFO] Checking file /etc/cron.daily/pakiti2-client-update...[0m
+[0;32m    openstack: [INFO] Checking file /etc/cron.hourly/0anacron...[0m
+[0;32m    openstack: [INFO] Checking file /etc/crontab...[0m
+[0;32m    openstack: [INFO] Checking file /etc/motd...[0m
+[0;32m    openstack: updated /etc/motd[0m
+[0;32m    openstack: [INFO] Checking file /etc/nagios/nrpe.cfg...[0m
+[0;32m    openstack: [INFO] Checking file /etc/pakiti2/pakiti2-client.conf...[0m
+[0;32m    openstack: updated /etc/pakiti2/pakiti2-client.conf[0m
+[0;32m    openstack: changed mode(00640) of /etc/pakiti2/pakiti2-client.conf[0m
+[0;32m    openstack: [INFO] Checking file /etc/profile.d/reboot-required.csh...[0m
+[0;32m    openstack: updated /etc/profile.d/reboot-required.csh[0m
+[0;32m    openstack: [INFO] Checking file /etc/profile.d/reboot-required.sh...[0m
+[0;32m    openstack: updated /etc/profile.d/reboot-required.sh[0m
+[0;32m    openstack: [INFO] Checking file /etc/yum/post-actions/reboot-required.action...[0m
+[0;32m    openstack: updated /etc/yum/post-actions/reboot-required.action[0m
+[0;32m    openstack: [INFO] Checking file /root/.ssh/authorized_keys...[0m
+[0;32m    openstack: updated /root/.ssh/authorized_keys[0m
+[0;32m    openstack: changed mode(00600) of /root/.ssh/authorized_keys[0m
+[0;32m    openstack: changed mode(00644) of /root/.ssh/authorized_keys[0m
+[0;32m    openstack: [INFO] Checking file /usr/bin/quattor...[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/bin/healthcheck_systemtemp...[0m
+[0;32m    openstack: updated /usr/local/bin/healthcheck_systemtemp[0m
+[0;32m    openstack: changed mode(00555) of /usr/local/bin/healthcheck_systemtemp[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/bin/prepvm-managed.sh...[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/bin/prepvm-unmanaged.sh...[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/sbin/nrpe-restart...[0m
+[0;32m    openstack: [INFO] Checking file /usr/sbin/quattor-configure...[0m
+[0;32m    openstack: [INFO] Checking file /usr/sbin/quattor-list...[0m
+[0;32m    openstack: [INFO] Checking file /usr/sbin/quattor-unconfigure...[0m
+[0;32m    openstack: [INFO] Executing command: /usr/sbin/pakiti2-client[0m
+[0;32m    openstack: [INFO] configure on component filecopy executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: dirperm[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component dirperm executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: cron[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Checking cron entry remove-reboot-required...[0m
+[0;32m    openstack: [INFO] Checking cron entry healthcheck_systemtemp...[0m
+[0;32m    openstack: changed mode(00640) of /var/log/healthcheck_systemtemp.ncm-cron.log[0m
+[0;32m    openstack: [INFO] Checking cron entry magdb-discover...[0m
+[0;32m    openstack: [INFO] smeared magdb-discover by 29[0m
+[0;32m    openstack: [INFO] Checking cron entry pakiti2-daily...[0m
+[0;32m    openstack: [INFO] smeared pakiti2-daily by 1351[0m
+[0;32m    openstack: [INFO] Checking cron entry pakiti2-startup...[0m
+[0;32m    openstack: changed mode(00640) of /var/log/pakiti2-startup.ncm-cron.log[0m
+[0;32m    openstack: [INFO] configure on component cron executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /etc/cron.d/remove-reboot-required.ncm-cron.cron[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /var/log/remove-reboot-required.ncm-cron.log[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /etc/cron.d/magdb-discover.ncm-cron.cron[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /var/log/magdb-discover.ncm-cron.log[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /etc/cron.d/pakiti2-daily.ncm-cron.cron[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /var/log/pakiti2-daily.ncm-cron.log[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: chkconfig[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Current runlevel is 3[0m
+[0;32m    openstack: [INFO] ncm-cdispd: was 'on' for "", new list is "2345" ; and starting[0m
+[0;32m    openstack: [INFO] nrpe: was 'on' for "", new list is "2345" ; and starting[0m
+[0;32m    openstack: [INFO] configure on component chkconfig executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: cdp[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component cdp executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: ccm[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Fetched profile unchanged, latest CID 1 name prod-domain[0m
+[0;32m    openstack: [INFO] configure on component ccm executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: ccm modified file /etc/ccm.conf[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: autofs[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Checking map home-tier1...[0m
+[0;32m    openstack: [INFO] Checking map misc...[0m
+[0;32m    openstack: [INFO] Checking map rutherford...[0m
+[0;32m    openstack: [INFO] Checking map stage...[0m
+[0;32m    openstack: [INFO] Checking /etc/auto.master...[0m
+[0;32m    openstack: [INFO] configure on component autofs executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: authconfig[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] authconfig command ERROR produced:[0m
+[0;32m    openstack: error reading information on service nscd: No such file or directory[0m
+[0;32m    openstack: error reading information on service nscd: No such file or directory[0m
+[0;32m    openstack: nscd: unrecognized service[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] configure on component authconfig executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: altlogrotate[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component altlogrotate executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: accounts[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] System has 35 accounts in 56 groups[0m
+[0;32m    openstack: [INFO] Committing 56 groups[0m
+[0;32m    openstack: [INFO] Committing 35 accounts[0m
+[0;32m    openstack: [INFO] configure on component accounts executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: sudo[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component sudo executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: =========================================================[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [OK]   0 errors, 0 warnings executing configure[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc0.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc0.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc1.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc1.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc2.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc2.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc3.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc3.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc4.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc4.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc5.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc5.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc6.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: ln: creating symbolic link `/etc/rc.d/rc6.d/S99-nubes-boot': File exists[0m
+[0;32m    openstack: Loaded plugins: pakiti2, post-transaction-actions, priorities, security,[0m
+[0;32m    openstack: : versionlock[0m
+[0;32m    openstack: Cleaning repos: ca epel-6-x86_64 java lldpd-rhel_6 nagios nagios-sl5 pakiti_2[0m
+[0;32m    openstack: : quattor quattor_sl ral-sl5-datastore site sl-6x-x86_64-os[0m
+[0;32m    openstack: : sl-6x-x86_64-security sl6_addons tier1-sl5-local tier1-sl6-local[0m
+[0;32m    openstack: Cleaning up Everything[0m
+[0;32m    openstack: Stopping ncm-cdispd:[  OK  ][0m
+[0;32m    openstack: userdel: user 'wjc16017' does not exist[0m
+[0;32m    openstack: userdel: user 'admin' does not exist[0m
+[0;32m    openstack: userdel: user 'admin-wjc16017' does not exist[0m
+[0;32m    openstack: /usr/local/bin/prepvm-managed.sh: line 132: /etc/systemd/system/nubes-boot.service: No such file or directory[0m
+[0;32m    openstack: /usr/local/bin/prepvm-managed.sh: line 133: systemctl: command not found[0m
+[0;32m    openstack: /usr/local/bin/prepvm-managed.sh: line 134: systemctl: command not found[0m
+[0;32m    openstack: sudo: systemctl: command not found[0m
+[0;32m    openstack: Loaded plugins: pakiti2, post-transaction-actions, priorities, security,[0m
+[0;32m    openstack: : versionlock[0m
+[0;32m    openstack: Existing lock /var/run/yum.pid: another copy is running as pid 12938.[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum-complete-tr[0m
+[0;32m    openstack: Memory :  30 M RSS (235 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:16:34 2017 - 00:26 ago[0m
+[0;32m    openstack: State  : Uninterruptible, pid: 12938[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum-complete-tr[0m
+[0;32m    openstack: Memory :  62 M RSS (268 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:16:34 2017 - 00:28 ago[0m
+[0;32m    openstack: State  : Running, pid: 12938[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum-complete-tr[0m
+[0;32m    openstack: Memory : 111 M RSS (317 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:16:34 2017 - 00:30 ago[0m
+[0;32m    openstack: State  : Running, pid: 12938[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum-complete-tr[0m
+[0;32m    openstack: Memory : 163 M RSS (368 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:16:34 2017 - 00:32 ago[0m
+[0;32m    openstack: State  : Running, pid: 12938[0m
+[0;32m    openstack: Existing lock /var/run/yum.pid: another copy is running as pid 12990.[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  23 M RSS (232 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:02 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  27 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:04 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  27 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:06 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  27 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:08 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  27 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:10 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  27 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:12 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  27 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:14 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  28 M RSS (233 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:16 ago[0m
+[0;32m    openstack: State  : Uninterruptible, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  29 M RSS (238 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:18 ago[0m
+[0;32m    openstack: State  : Uninterruptible, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  33 M RSS (239 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:20 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  33 M RSS (239 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:22 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  33 M RSS (239 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:24 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  33 M RSS (239 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:26 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  33 M RSS (239 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:28 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Another app is currently holding the yum lock; waiting for it to exit...[0m
+[0;32m    openstack: The other application is: yum[0m
+[0;32m    openstack: Memory :  28 M RSS (239 MB VSZ)[0m
+[0;32m    openstack: Started: Thu Jul 13 12:17:06 2017 - 00:30 ago[0m
+[0;32m    openstack: State  : Running, pid: 12990[0m
+[0;32m    openstack: Setting up Remove Process[0m
+[0;32m    openstack: No Match for argument: ypbind[0m
+[0;32m    openstack: 343 packages excluded due to repository priority protections[0m
+[0;32m    openstack: Package(s) ypbind available, but not installed.[0m
+[0;32m    openstack: No Packages marked for removal[0m
+[1;32m==> openstack: Stopping server: 6af7ac3c-bdc5-437f-bd92-8aa663ce56b5 ...[0m
+[0;32m    openstack: Waiting for server to stop: 6af7ac3c-bdc5-437f-bd92-8aa663ce56b5 ...[0m
+[1;32m==> openstack: Creating the image: sl6x-x86_64 inventory AQ[0m
+[0;32m    openstack: Image: 811b598c-af09-46b6-a97c-d5842cf03f7a[0m
+[1;32m==> openstack: Waiting for image sl6x-x86_64 inventory AQ (image id: 811b598c-af09-46b6-a97c-d5842cf03f7a) to become ready...[0m
+[1;32m==> openstack: Terminating the source server: 6af7ac3c-bdc5-437f-bd92-8aa663ce56b5 ...[0m
+[1;32m==> openstack: Deleting temporary keypair: packer 59675555-6b1b-366d-41c7-bc4ae02ed0f8 ...[0m
+[1;32m==> openstack: Running post-processor: shell-local[0m
+[1;32m==> openstack (shell-local): Post processing with local shell script: chmod +x "/tmp/packer-shell100355261"; PACKER_BUILD_NAME='openstack' PACKER_BUILDER_TYPE='openstack' "/tmp/packer-shell100355261"[0m
+[1;32m==> openstack (shell-local): Executing local script: /tmp/packer-shell100355261[0m
+[0;32m    openstack (shell-local): 811b598c-af09-46b6-a97c-d5842cf03f7a[0m
+[0;32m    openstack (shell-local): 751bfea2-2516-47c0-a7a0-5820ded7b2b0[0m
+[0;32m    openstack (shell-local): +------------------+----------------------------------------------------------------------------------+[0m
+[0;32m    openstack (shell-local): | Property         | Value                                                                            |[0m
+[0;32m    openstack (shell-local): +------------------+----------------------------------------------------------------------------------+[0m
+[0;32m    openstack (shell-local): | aq_os            | SL                                                                               |[0m
+[0;32m    openstack (shell-local): | aq_osversion     | 6x-x86_64                                                                        |[0m
+[0;32m    openstack (shell-local): | base_image_ref   | e7e09433-3849-4971-94cb-5031c792f845                                             |[0m
+[0;32m    openstack (shell-local): | checksum         | None                                                                             |[0m
+[0;32m    openstack (shell-local): | clean_attempts   | 2                                                                                |[0m
+[0;32m    openstack (shell-local): | container_format | bare                                                                             |[0m
+[0;32m    openstack (shell-local): | created_at       | 2017-07-13T11:10:17Z                                                             |[0m
+[0;32m    openstack (shell-local): | direct_url       | rbd://38f90dd9-f7a8-40fd-                                                        |[0m
+[0;32m    openstack (shell-local): |                  | b8b8-2b207b6bfc85/openstack/751bfea2-2516-47c0-a7a0-5820ded7b2b0/snap            |[0m
+[0;32m    openstack (shell-local): | disk_format      | raw                                                                              |[0m
+[0;32m    openstack (shell-local): | id               | 751bfea2-2516-47c0-a7a0-5820ded7b2b0                                             |[0m
+[0;32m    openstack (shell-local): | image_location   | snapshot                                                                         |[0m
+[0;32m    openstack (shell-local): | image_state      | available                                                                        |[0m
+[0;32m    openstack (shell-local): | image_type       | image                                                                            |[0m
+[0;32m    openstack (shell-local): | instance_uuid    | 04508c4e-9e41-469c-976f-5da181d11a87                                             |[0m
+[0;32m    openstack (shell-local): | kernel_id        | None                                                                             |[0m
+[0;32m    openstack (shell-local): | min_disk         | 10                                                                               |[0m
+[0;32m    openstack (shell-local): | min_ram          | 0                                                                                |[0m
+[0;32m    openstack (shell-local): | name             | archive-sl6x-x86_64 2017-07-13                                                   |[0m
+[0;32m    openstack (shell-local): | os_distro        | ScientificLinux                                                                  |[0m
+[0;32m    openstack (shell-local): | os_variant       | AQ--progress                                                                     |[0m
+[0;32m    openstack (shell-local): | os_version       | 6                                                                                |[0m
+[0;32m    openstack (shell-local): | owner            | fa0f417fb4b5462791e4320e317eb2d2                                                 |[0m
+[0;32m    openstack (shell-local): | owner_id         | fa0f417fb4b5462791e4320e317eb2d2                                                 |[0m
+[0;32m    openstack (shell-local): | protected        | False                                                                            |[0m
+[0;32m    openstack (shell-local): | ramdisk_id       | None                                                                             |[0m
+[0;32m    openstack (shell-local): | size             | 10737418240                                                                      |[0m
+[0;32m    openstack (shell-local): | status           | active                                                                           |[0m
+[0;32m    openstack (shell-local): | tags             | []                                                                               |[0m
+[0;32m    openstack (shell-local): | updated_at       | 2017-07-13T11:18:51Z                                                             |[0m
+[0;32m    openstack (shell-local): | user_id          | d404f12d981140098ba54d4ed4897ef6                                                 |[0m
+[0;32m    openstack (shell-local): | virtual_size     | None                                                                             |[0m
+[0;32m    openstack (shell-local): | visibility       | private                                                                          |[0m
+[0;32m    openstack (shell-local): +------------------+----------------------------------------------------------------------------------+[0m
+[1;32mBuild 'openstack' finished.[0m
+
+==> Builds finished. The artifacts of successful builds are:
+--> openstack: An image was created: 811b598c-af09-46b6-a97c-d5842cf03f7a
+--> openstack: 
+rabbit2packer: Build finished at 1499944737 (epoch) with exit code 0

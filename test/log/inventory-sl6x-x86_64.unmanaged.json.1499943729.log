@@ -1,0 +1,28 @@
+[1;32mopenstack output will be in this color.[0m
+
+[1;32m==> openstack: Discovering enabled extensions...[0m
+[1;32m==> openstack: Loading flavor: m1.tiny[0m
+[0;32m    openstack: Verified flavor. ID: 1[0m
+[1;32m==> openstack: Creating temporary keypair: packer 59675332-d472-56e7-d938-a9eb40d680e3 ...[0m
+[1;32m==> openstack: Created temporary keypair: packer 59675332-d472-56e7-d938-a9eb40d680e3[0m
+[1;32m==> openstack: Successfully converted BER encoded SSH key to DER encoding.[0m
+[1;32m==> openstack: Launching server...[0m
+[0;32m    openstack: Server ID: bf52ac71-c1ee-4a8f-bfb0-2a54ad51a61b[0m
+[1;32m==> openstack: Waiting for server to become ready...[0m
+[1;32m==> openstack: Waiting for SSH to become available...[0m
+[1;32m==> openstack: Connected to SSH![0m
+[1;32m==> openstack: Uploading /etc/packer-utils/templates/update_ccm_unmanaged.sh => /root/update_ccm_unmanaged.sh[0m
+[1;32m==> openstack: Provisioning with shell script: /tmp/packer-shell800962272[0m
+[0;32m    openstack: Starting ccm update script, waiting for network[0m
+[0;32m    openstack: Server:		130.246.72.21[0m
+[0;32m    openstack: Address:	130.246.72.21#53[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: 166.186.246.130.in-addr.arpa	name = vm694.nubes.stfc.ac.uk.[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: Got hostname vm694.nubes.stfc.ac.uk[0m
+[0;32m    openstack: Fetching profile[0m
+[1;32m==> openstack: Terminating the source server: bf52ac71-c1ee-4a8f-bfb0-2a54ad51a61b ...[0m
+[1;32m==> openstack: Deleting temporary keypair: packer 59675332-d472-56e7-d938-a9eb40d680e3 ...[0m
+[1;32mBuild 'openstack' finished.[0m
+Cleanly cancelled builds after being interrupted.
+rabbit2packer: Build finished at 1499943808 (epoch) with exit code 1

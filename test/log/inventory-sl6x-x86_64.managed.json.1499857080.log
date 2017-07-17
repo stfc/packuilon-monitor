@@ -1,0 +1,39 @@
+[1;32mopenstack output will be in this color.[0m
+
+[1;32m==> openstack: Discovering enabled extensions...[0m
+[1;32m==> openstack: Loading flavor: m1.tiny[0m
+[0;32m    openstack: Verified flavor. ID: 1[0m
+[1;32m==> openstack: Creating temporary keypair: packer 596600ba-0898-f8bc-0a19-f55fe2035c08 ...[0m
+[1;32m==> openstack: Created temporary keypair: packer 596600ba-0898-f8bc-0a19-f55fe2035c08[0m
+[1;32m==> openstack: Successfully converted BER encoded SSH key to DER encoding.[0m
+[1;32m==> openstack: Launching server...[0m
+[0;32m    openstack: Server ID: fc665621-d14a-4ced-8e62-96c43bb1c325[0m
+[1;32m==> openstack: Waiting for server to become ready...[0m
+[1;32m==> openstack: Waiting for SSH to become available...[0m
+[1;32m==> openstack: Connected to SSH![0m
+[1;32m==> openstack: Uploading /etc/packer-utils/templates/update_ccm_managed.sh => /root/update_ccm_managed.sh[0m
+[1;32m==> openstack: Provisioning with shell script: /tmp/packer-shell035386251[0m
+[0;32m    openstack: Starting ccm update script, waiting for network[0m
+[0;32m    openstack: Server:		130.246.72.21[0m
+[0;32m    openstack: Address:	130.246.72.21#53[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: 61.186.246.130.in-addr.arpa	name = vm589.nubes.stfc.ac.uk.[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: Got hostname vm589.nubes.stfc.ac.uk[0m
+[0;32m    openstack: Fetching profile[0m
+[0;32m    openstack: [INFO] No existing cache /var/lib/ccm/data/aHR0cDovL2FxdWlsb24uZ3JpZHBwLnJsLmFjLnVrL3Byb2ZpbGVzL3ZtNTg5Lm51YmVzLnN0ZmMuYWMudWsuanNvbg==, not specifying the modification date while retrieving[0m
+[0;32m    openstack: [INFO] Profile updated, new latest CID 5 name prod_cloud-domain[0m
+[0;32m    openstack: Running quattor configure[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] NCM-NCD version 17.2.0 started by root at: Wed Jul 12 11:58:53 2017[0m
+[0;32m    openstack: [INFO] Using profile CID 5 name prod_cloud-domain[0m
+[0;32m    openstack: [INFO] No components specified, getting all active ones.[0m
+[0;32m    openstack: [INFO] executing configure on components....[0m
+[0;32m    openstack:[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: spma[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[1;32m==> openstack: Terminating the source server: fc665621-d14a-4ced-8e62-96c43bb1c325 ...[0m
+[1;32m==> openstack: Deleting temporary keypair: packer 596600ba-0898-f8bc-0a19-f55fe2035c08 ...[0m
+[1;32mBuild 'openstack' finished.[0m
+Cleanly cancelled builds after being interrupted.

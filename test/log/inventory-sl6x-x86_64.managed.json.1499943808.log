@@ -1,0 +1,16 @@
+[1;32mopenstack output will be in this color.[0m
+
+[1;32m==> openstack: Discovering enabled extensions...[0m
+[1;32m==> openstack: Loading flavor: m1.tiny[0m
+[0;32m    openstack: Verified flavor. ID: 1[0m
+[1;32m==> openstack: Creating temporary keypair: packer 59675382-5582-7d8e-5033-29a76475102a ...[0m
+[1;32m==> openstack: Created temporary keypair: packer 59675382-5582-7d8e-5033-29a76475102a[0m
+[1;32m==> openstack: Successfully converted BER encoded SSH key to DER encoding.[0m
+[1;32m==> openstack: Launching server...[0m
+[0;32m    openstack: Server ID: cf8ff913-b3cc-4aaf-85a0-8cc7b041d662[0m
+[1;32m==> openstack: Waiting for server to become ready...[0m
+[1;31m==> openstack: Error waiting for server (cf8ff913-b3cc-4aaf-85a0-8cc7b041d662) to become ready: interrupted[0m
+[1;32m==> openstack: Terminating the source server: cf8ff913-b3cc-4aaf-85a0-8cc7b041d662 ...[0m
+[1;32m==> openstack: Deleting temporary keypair: packer 59675382-5582-7d8e-5033-29a76475102a ...[0m
+[1;31mBuild 'openstack' errored: Error waiting for server (cf8ff913-b3cc-4aaf-85a0-8cc7b041d662) to become ready: interrupted[0m
+Cleanly cancelled builds after being interrupted.

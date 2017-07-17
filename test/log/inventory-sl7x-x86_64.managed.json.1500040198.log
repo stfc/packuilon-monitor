@@ -1,0 +1,285 @@
+[1;32mopenstack output will be in this color.[0m
+
+[1;32m==> openstack: Discovering enabled extensions...[0m
+[1;32m==> openstack: Loading flavor: m1.tiny[0m
+[0;32m    openstack: Verified flavor. ID: 1[0m
+[1;32m==> openstack: Creating temporary keypair: packer 5968cc08-0e6f-6232-efe2-5bbb21ed65a4 ...[0m
+[1;32m==> openstack: Created temporary keypair: packer 5968cc08-0e6f-6232-efe2-5bbb21ed65a4[0m
+[1;32m==> openstack: Successfully converted BER encoded SSH key to DER encoding.[0m
+[1;32m==> openstack: Launching server...[0m
+[0;32m    openstack: Server ID: 954c334e-36a5-4328-a981-0a9b22186a3f[0m
+[1;32m==> openstack: Waiting for server to become ready...[0m
+[1;32m==> openstack: Waiting for SSH to become available...[0m
+[1;32m==> openstack: Connected to SSH![0m
+[1;32m==> openstack: Uploading /etc/packer-utils/templates/update_ccm_managed.sh => /root/update_ccm_managed.sh[0m
+[1;32m==> openstack: Provisioning with shell script: /tmp/packer-shell752621744[0m
+[0;32m    openstack: Starting ccm update script, waiting for network[0m
+[0;32m    openstack: Server:		130.246.72.21[0m
+[0;32m    openstack: Address:	130.246.72.21#53[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: 130.186.246.130.in-addr.arpa	name = vm658.nubes.stfc.ac.uk.[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: Got hostname vm658.nubes.stfc.ac.uk[0m
+[0;32m    openstack: Fetching profile[0m
+[0;32m    openstack: [INFO] No existing cache /var/lib/ccm/data/aHR0cDovL2FxdWlsb24uZ3JpZHBwLnJsLmFjLnVrL3Byb2ZpbGVzL3ZtNjU4Lm51YmVzLnN0ZmMuYWMudWsuanNvbg==, not specifying the modification date while retrieving[0m
+[0;32m    openstack: [INFO] Profile updated, new latest CID 5 name prod-domain[0m
+[0;32m    openstack: Running quattor configure[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] NCM-NCD version 17.2.0 started by root at: Fri Jul 14 14:51:09 2017[0m
+[0;32m    openstack: [INFO] Using profile CID 5 name prod-domain[0m
+[0;32m    openstack: [INFO] No components specified, getting all active ones.[0m
+[0;32m    openstack: [INFO] executing configure on components....[0m
+[0;32m    openstack:[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: spma[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component spma executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/openstack-mitaka.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/openstack-mitaka.pkgs[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/sl-7x-x86_64-extras.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/sl-7x-x86_64-extras.pkgs[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/sl-7x-x86_64-os.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/sl-7x-x86_64-security.repo[0m
+[0;32m    openstack: [INFO] EVENT: spma modified file /etc/yum.quattor.repos.d/epel-7-x86_64.repo[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: systemd[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Skipping service configuration[0m
+[0;32m    openstack: [INFO] configure on component systemd executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: syslog[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: Files /etc/rsyslog.conf.new and /etc/rsyslog.conf differ[0m
+[0;32m    openstack: updated /etc/sysconfig/rsyslog[0m
+[0;32m    openstack: Redirecting to /bin/systemctl restart  rsyslog.service[0m
+[0;32m    openstack: [INFO] configure on component syslog executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: sysctl[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component sysctl executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: symlink[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component symlink executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: ssh[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: Redirecting to /bin/systemctl condrestart  sshd.service[0m
+[0;32m    openstack: [INFO] configure on component ssh executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: ssh modified file /etc/ssh/sshd_config[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: resolver[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: updated /etc/resolv.conf[0m
+[0;32m    openstack: changed mode(00444) of /etc/resolv.conf[0m
+[0;32m    openstack: [INFO] configure on component resolver executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: pam[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component pam executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: ntpd[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component ntpd executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: modprobe[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component modprobe executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: metaconfig[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] File /etc/sysconfig/healthcheck updated[0m
+[0;32m    openstack: [INFO] configure on component metaconfig executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: metaconfig modified file /etc/sysconfig/healthcheck[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: filecopy[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Checking file /etc/bash_completion.d/quattor...[0m
+[0;32m    openstack: [INFO] Checking file /etc/cron.d/0hourly...[0m
+[0;32m    openstack: [INFO] Checking file /etc/cron.daily/pakiti2-client-update...[0m
+[0;32m    openstack: [INFO] Checking file /etc/cron.hourly/0anacron...[0m
+[0;32m    openstack: [INFO] Checking file /etc/crontab...[0m
+[0;32m    openstack: [INFO] Checking file /etc/motd...[0m
+[0;32m    openstack: updated /etc/motd[0m
+[0;32m    openstack: [INFO] Checking file /etc/nagios/nrpe.cfg...[0m
+[0;32m    openstack: [INFO] Checking file /etc/pakiti2/pakiti2-client.conf...[0m
+[0;32m    openstack: updated /etc/pakiti2/pakiti2-client.conf[0m
+[0;32m    openstack: changed mode(00640) of /etc/pakiti2/pakiti2-client.conf[0m
+[0;32m    openstack: [INFO] Checking file /etc/profile.d/reboot-required.csh...[0m
+[0;32m    openstack: updated /etc/profile.d/reboot-required.csh[0m
+[0;32m    openstack: [INFO] Checking file /etc/profile.d/reboot-required.sh...[0m
+[0;32m    openstack: updated /etc/profile.d/reboot-required.sh[0m
+[0;32m    openstack: [INFO] Checking file /etc/yum/post-actions/reboot-required.action...[0m
+[0;32m    openstack: updated /etc/yum/post-actions/reboot-required.action[0m
+[0;32m    openstack: [INFO] Checking file /root/.ssh/authorized_keys...[0m
+[0;32m    openstack: updated /root/.ssh/authorized_keys[0m
+[0;32m    openstack: changed mode(00600) of /root/.ssh/authorized_keys[0m
+[0;32m    openstack: changed mode(00644) of /root/.ssh/authorized_keys[0m
+[0;32m    openstack: [INFO] Checking file /usr/bin/quattor...[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/bin/healthcheck_systemtemp...[0m
+[0;32m    openstack: updated /usr/local/bin/healthcheck_systemtemp[0m
+[0;32m    openstack: changed mode(00555) of /usr/local/bin/healthcheck_systemtemp[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/bin/prepvm-managed.sh...[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/bin/prepvm-unmanaged.sh...[0m
+[0;32m    openstack: [INFO] Checking file /usr/local/sbin/nrpe-restart...[0m
+[0;32m    openstack: [INFO] Checking file /usr/sbin/quattor-configure...[0m
+[0;32m    openstack: [INFO] Checking file /usr/sbin/quattor-list...[0m
+[0;32m    openstack: [INFO] Checking file /usr/sbin/quattor-unconfigure...[0m
+[0;32m    openstack: [INFO] Executing command: /usr/sbin/pakiti2-client[0m
+[0;32m    openstack: [INFO] configure on component filecopy executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: dirperm[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component dirperm executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: cron[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Checking cron entry remove-reboot-required...[0m
+[0;32m    openstack: [INFO] Checking cron entry healthcheck_systemtemp...[0m
+[0;32m    openstack: changed mode(00640) of /var/log/healthcheck_systemtemp.ncm-cron.log[0m
+[0;32m    openstack: [INFO] Checking cron entry magdb-discover...[0m
+[0;32m    openstack: [INFO] smeared magdb-discover by 11[0m
+[0;32m    openstack: [INFO] Checking cron entry pakiti2-daily...[0m
+[0;32m    openstack: [INFO] smeared pakiti2-daily by 1138[0m
+[0;32m    openstack: [INFO] Checking cron entry pakiti2-startup...[0m
+[0;32m    openstack: changed mode(00640) of /var/log/pakiti2-startup.ncm-cron.log[0m
+[0;32m    openstack: [INFO] configure on component cron executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /etc/cron.d/remove-reboot-required.ncm-cron.cron[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /var/log/remove-reboot-required.ncm-cron.log[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /etc/cron.d/magdb-discover.ncm-cron.cron[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /var/log/magdb-discover.ncm-cron.log[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /etc/cron.d/pakiti2-daily.ncm-cron.cron[0m
+[0;32m    openstack: [INFO] EVENT: cron modified file /var/log/pakiti2-daily.ncm-cron.log[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: chkconfig[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Only unitfile configuration for unit nrpe.service (state enabled startstop 1 type service shortname nrpe targets multi-user.target possible_missing 0)[0m
+[0;32m    openstack: [INFO] is_ufstate: unit nfs-idmapd.service with UnitFileState 'static' is a static unit. Not going to force the state to enabled and assume this is ok.[0m
+[0;32m    openstack: [INFO] configure on component chkconfig executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: cdp[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component cdp executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: ccm[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Fetched profile unchanged, latest CID 1 name prod-domain[0m
+[0;32m    openstack: [INFO] configure on component ccm executed, 0 errors, 0 warnings[0m
+[0;32m    openstack: [INFO] EVENT: ccm modified file /etc/ccm.conf[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: autofs[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] Checking map home-tier1...[0m
+[0;32m    openstack: [INFO] Checking map misc...[0m
+[0;32m    openstack: [INFO] Checking map rutherford...[0m
+[0;32m    openstack: [INFO] Checking map stage...[0m
+[0;32m    openstack: [INFO] Checking /etc/auto.master...[0m
+[0;32m    openstack: [INFO] configure on component autofs executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: authconfig[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] authconfig command ERROR produced:[0m
+[0;32m    openstack: getsebool:  SELinux is disabled[0m
+[0;32m    openstack: Failed to start nscd.service: Unit not found.[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] configure on component authconfig executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: altlogrotate[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component altlogrotate executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: accounts[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] System has 37 accounts in 60 groups[0m
+[0;32m    openstack: [INFO] Committing 60 groups[0m
+[0;32m    openstack: [INFO] Committing 37 accounts[0m
+[0;32m    openstack: [INFO] configure on component accounts executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [INFO] running component: sudo[0m
+[0;32m    openstack: ---------------------------------------------------------[0m
+[0;32m    openstack: [INFO] configure on component sudo executed, 0 errors, 0 warnings[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: =========================================================[0m
+[0;32m    openstack:[0m
+[0;32m    openstack: [OK]   0 errors, 0 warnings executing configure[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc0.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc0.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc1.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc1.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc2.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc2.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc3.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc3.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc4.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc4.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc5.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc5.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc6.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: ln: failed to create symbolic link ‘/etc/rc.d/rc6.d/S99-nubes-boot’: File exists[0m
+[0;32m    openstack: Loaded plugins: pakiti2, post-transaction-actions, priorities, versionlock[0m
+[0;32m    openstack: Cleaning repos: ca epel-7-x86_64 java lldpd-rhel_7 nagios nagios-sl5[0m
+[0;32m    openstack: : openstack-mitaka pakiti_2 quattor quattor_sl ral-sl5-datastore[0m
+[0;32m    openstack: : site sl-7x-x86_64-extras sl-7x-x86_64-os sl-7x-x86_64-security[0m
+[0;32m    openstack: : tier1-nagios-el7-x86_64 tier1-sl5-local[0m
+[0;32m    openstack: Cleaning up everything[0m
+[0;32m    openstack: Stopping ncm-cdispd (via systemctl):  [  OK  ][0m
+[0;32m    openstack: Redirecting to /bin/systemctl stop  iptables.service[0m
+[0;32m    openstack: Note: Forwarding request to 'systemctl disable iptables.service'.[0m
+[0;32m    openstack: userdel: user 'wjc16017' does not exist[0m
+[0;32m    openstack: userdel: user 'admin' does not exist[0m
+[0;32m    openstack: userdel: user 'admin-wjc16017' does not exist[0m
+[0;32m    openstack: Loaded plugins: pakiti2, post-transaction-actions, priorities, versionlock[0m
+[0;32m    openstack: No Match for argument: ypbind[0m
+[0;32m    openstack: No Packages marked for removal[0m
+[1;32m==> openstack: Stopping server: 954c334e-36a5-4328-a981-0a9b22186a3f ...[0m
+[0;32m    openstack: Waiting for server to stop: 954c334e-36a5-4328-a981-0a9b22186a3f ...[0m
+[1;32m==> openstack: Creating the image: sl7x-x86_64 inventory AQ[0m
+[0;32m    openstack: Image: f3305bac-3f42-4b5a-8db3-abffe906bab4[0m
+[1;32m==> openstack: Waiting for image sl7x-x86_64 inventory AQ (image id: f3305bac-3f42-4b5a-8db3-abffe906bab4) to become ready...[0m
+[1;32m==> openstack: Terminating the source server: 954c334e-36a5-4328-a981-0a9b22186a3f ...[0m
+[1;32m==> openstack: Deleting temporary keypair: packer 5968cc08-0e6f-6232-efe2-5bbb21ed65a4 ...[0m
+[1;32m==> openstack: Running post-processor: shell-local[0m
+[1;32m==> openstack (shell-local): Post processing with local shell script: chmod +x "/tmp/packer-shell183349518"; PACKER_BUILD_NAME='openstack' PACKER_BUILDER_TYPE='openstack' "/tmp/packer-shell183349518"[0m
+[1;32m==> openstack (shell-local): Executing local script: /tmp/packer-shell183349518[0m
+[0;32m    openstack (shell-local): f3305bac-3f42-4b5a-8db3-abffe906bab4[0m
+[0;32m    openstack (shell-local): d7ea93d8-1189-4eb6-8b64-d3b7624c58c0[0m
+[0;32m    openstack (shell-local): +------------------+----------------------------------------------------------------------------------+[0m
+[0;32m    openstack (shell-local): | Property         | Value                                                                            |[0m
+[0;32m    openstack (shell-local): +------------------+----------------------------------------------------------------------------------+[0m
+[0;32m    openstack (shell-local): | base_image_ref   | f2be8c66-105d-4122-bffb-f88de3ef0fc6                                             |[0m
+[0;32m    openstack (shell-local): | checksum         | None                                                                             |[0m
+[0;32m    openstack (shell-local): | container_format | bare                                                                             |[0m
+[0;32m    openstack (shell-local): | created_at       | 2017-07-14T13:49:12Z                                                             |[0m
+[0;32m    openstack (shell-local): | direct_url       | rbd://38f90dd9-f7a8-40fd-                                                        |[0m
+[0;32m    openstack (shell-local): |                  | b8b8-2b207b6bfc85/openstack/d7ea93d8-1189-4eb6-8b64-d3b7624c58c0/snap            |[0m
+[0;32m    openstack (shell-local): | disk_format      | raw                                                                              |[0m
+[0;32m    openstack (shell-local): | id               | d7ea93d8-1189-4eb6-8b64-d3b7624c58c0                                             |[0m
+[0;32m    openstack (shell-local): | image_location   | snapshot                                                                         |[0m
+[0;32m    openstack (shell-local): | image_state      | available                                                                        |[0m
+[0;32m    openstack (shell-local): | image_type       | image                                                                            |[0m
+[0;32m    openstack (shell-local): | instance_uuid    | 23ad0abb-0f45-4565-b007-746065f83ce2                                             |[0m
+[0;32m    openstack (shell-local): | kernel_id        | None                                                                             |[0m
+[0;32m    openstack (shell-local): | min_disk         | 10                                                                               |[0m
+[0;32m    openstack (shell-local): | min_ram          | 0                                                                                |[0m
+[0;32m    openstack (shell-local): | name             | archive-sl7x-x86_64 2017-07-14                                                   |[0m
+[0;32m    openstack (shell-local): | os_distro        | ScientificLinux                                                                  |[0m
+[0;32m    openstack (shell-local): | os_variant       | AQ--progress                                                                     |[0m
+[0;32m    openstack (shell-local): | os_version       | 7                                                                                |[0m
+[0;32m    openstack (shell-local): | owner            | fa0f417fb4b5462791e4320e317eb2d2                                                 |[0m
+[0;32m    openstack (shell-local): | owner_id         | fa0f417fb4b5462791e4320e317eb2d2                                                 |[0m
+[0;32m    openstack (shell-local): | protected        | False                                                                            |[0m
+[0;32m    openstack (shell-local): | ramdisk_id       | None                                                                             |[0m
+[0;32m    openstack (shell-local): | size             | 10737418240                                                                      |[0m
+[0;32m    openstack (shell-local): | status           | active                                                                           |[0m
+[0;32m    openstack (shell-local): | tags             | []                                                                               |[0m
+[0;32m    openstack (shell-local): | updated_at       | 2017-07-14T13:57:37Z                                                             |[0m
+[0;32m    openstack (shell-local): | user_id          | d404f12d981140098ba54d4ed4897ef6                                                 |[0m
+[0;32m    openstack (shell-local): | virtual_size     | None                                                                             |[0m
+[0;32m    openstack (shell-local): | visibility       | private                                                                          |[0m
+[0;32m    openstack (shell-local): +------------------+----------------------------------------------------------------------------------+[0m
+[1;32mBuild 'openstack' finished.[0m
+
+==> Builds finished. The artifacts of successful builds are:
+--> openstack: An image was created: f3305bac-3f42-4b5a-8db3-abffe906bab4
+--> openstack: 
+rabbit2packer: Build finished at 1500040663 (epoch) with exit code 0

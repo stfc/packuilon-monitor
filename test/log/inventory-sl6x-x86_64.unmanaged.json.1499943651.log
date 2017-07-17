@@ -1,0 +1,7 @@
+Failed to parse template: Error parsing JSON: invalid character '"' after object key:value pair
+At line 14, column 2 (offset 383):
+   13: "AQ_OSVERSION": "6x-x86_64"
+   14: "
+       ^
+
+rabbit2packer: Build finished at 1499943651 (epoch) with exit code 1
