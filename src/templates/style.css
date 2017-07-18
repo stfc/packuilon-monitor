@@ -1,0 +1,28 @@
+p {
+    font-family: {{ base_font_family }};
+}
+
+table {
+    font-family: {{ base_font_family }}
+    border-collapse: separate;
+    border-spacing: 15px 10px
+}
+
+body {
+    padding-left: 30%
+}
+
+span.passed-icon {
+    color: green;
+    font-size: {{ icon_font_size }}
+}
+
+span.failed-icon {
+    color: red;
+    font-size: {{ icon_font_size }}
+}
+
+span.running-icon {
+    color: orange;
+    font-size: {{ icon_font_size }}
+}

@@ -44,7 +44,7 @@ def match_status_line(line):
     if m:
         (t, e) = m.group(1,2)
         return (int(t), int(e))
-    elif re.match(_cancelled_line_matcher):
+    elif re.match(_cancelled_line_matcher, line):
         return (None, 130) # exit code for ^C
     else:
         return False
@@ -77,7 +77,7 @@ def log_files(dir):
     This is as opposed to os.listdir(), which gives you the relative paths of
     the files.
     '''
-    return map(lambda f: os.join(dir, f),
+    return map(lambda f: os.path.join(dir, f),
                os.listdir(dir))
 
 def get_last_line(filepath):
