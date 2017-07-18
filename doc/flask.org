@@ -1,0 +1,20 @@
+* Templating (Jinja2)
+  Can handle any plain text format -- I plan to use it for the HTML and CSS of
+  the monitor.
+
+  (For the full documentation, go to the Jinja2 website: jinja.pocoo.org/docs/latest/templates.)
+** Setting a `base' font using a variable
+   #+BEGIN_SOURCE css
+     table {
+       font-family: {{ base_font_family }};
+     }
+   #+END_SOURCE
+
+   #+BEGIN_SOURCE python
+     from flask import render_template
+
+     @app.route('/static/style.css')
+     def style():
+         return render_template('templates/style.css',
+             base_font_family = 'Lucida Console, monospace')
+   #+END_SOURCE
