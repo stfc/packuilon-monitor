@@ -3,26 +3,62 @@ p {
 }
 
 table {
-    font-family: {{ base_font_family }}
+    font-family: {{ base_font_family }};
     border-collapse: separate;
-    border-spacing: 15px 10px
+    border-spacing: 15px 5px;
 }
 
-body {
-    padding-left: 30%
+tr:nth-child(3) {
+    padding: 50px;
+}
+
+/* body { */
+/*     padding-left: 30%; */
+/* } */
+
+a.log-link {
+    color: #2A5DB0;
+    text-decoration: none;
+}
+
+a.log-link:visited {
+    color: inherit;
 }
 
 span.passed-icon {
     color: green;
-    font-size: {{ icon_font_size }}
+    font-size: {{ icon_font_size }};
 }
+
+span.passed-icon::before {
+    content: "\2714"; /* Unicode HEAVY CHECK */
+}
+
 
 span.failed-icon {
     color: red;
-    font-size: {{ icon_font_size }}
+    font-size: {{ icon_font_size }};
+}
+
+span.failed-icon::before {
+    content: "\2718"; /* Unicode HEAVY BALLOT CROSS */
+}
+
+span.cancelled-icon {
+    color: red;
+    font-size: {{ icon_font_size }};
+}
+
+span.cancelled-icon::before {
+    content: "\20E0"; /* Unicode COMBINING ENCLOSING CIRCLE BACKSLASH */
+                 /* i.e. the `no'-sign symbol                    */
 }
 
 span.running-icon {
     color: orange;
-    font-size: {{ icon_font_size }}
+    font-size: {{ icon_font_size }};
+}
+
+span.ran-for-cancelled {
+    font-style: italic;
 }

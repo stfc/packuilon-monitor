@@ -16,13 +16,13 @@ from collections import namedtuple
 # If the build has 'failed', (4) *might* be None if the build was cancelled.
 
 BuildInfo = namedtuple('BuildInfo',
-                       ('name', 'start_time', 'status', 'end_time', 'exit_code'))
+                       ('path', 'name', 'start_time', 'status', 'end_time', 'exit_code'))
 
 # FIXME: will define this in the main package, not here.
 ## LOGDIR = '/etc/packer-utils/log/'
 
 _status_line_matcher = re.compile(r'^rabbit2packer: Build finished at (\d+) \(epoch\) with exit code (\d+)$')
-_cancelled_line_matcher = re.compile(r'^Cleanly cancelled builds after being iterrupted.$')
+_cancelled_line_matcher = re.compile(r'^Cleanly cancelled builds after being interrupted.$')
 
 def match_status_line(line):
     '''Match a line of a build log for finish time and exit code.
@@ -88,6 +88,10 @@ def get_last_line(filepath):
             y = f.readline()
         return x
 
+def get_log(log_root, log_name):
+    with open(os.path.join(log_root, log_name), 'r') as f:
+        return f.read()
+
 def get_log_info(filepath):
     '''Scrape the build info from a named log file as a BuildInfo named tuple.
 
@@ -104,11 +108,11 @@ def get_log_info(filepath):
         if stat_info:
             (t1, e) = stat_info
             if e == 0:
-                return BuildInfo(n, t0, 'passed', t1, e)
+                return BuildInfo(filename, n, t0, 'passed', t1, e)
             else:
-                return BuildInfo(n, t0, 'failed', t1, e) # NOTE: t1 can still be None if build was cancelled.
+                return BuildInfo(filename, n, t0, 'failed', t1, e) # NOTE: t1 can still be None if build was cancelled.
         else:
-            return BuildInfo(n, t0, 'running', None, None)
+            return BuildInfo(filename, n, t0, 'running', None, None)
     else:
         raise Exception("Couldn't parse \"%s\" for build name and start time info." % filename)
 

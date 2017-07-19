@@ -1,26 +1,57 @@
 <!DOCTYPE html5>
 <html>
   <head>
-    <title>Builds|Packuilon</title>
+    <title>Builds | Packuilon</title>
+    <link href="css/style.css" rel="stylesheet"/>
   </head>
   <body>
+
+
     <table id="running">
     {% for build in running_builds|sort(reverse=True, attribute='start_time') %}
       <tr>
         <td><span class="running-icon"></span></td>
-        <td><span class="build-name">{{ build.name }}</span></td>
+        <td><span class="build-name">
+          {{ build.name }}.{{ build.start_time }}
+        </span></td>
       </tr>
     {% endfor %}
     </table>
+
+
     <table id="finished">
-    {% for build in finished_builds|sort(attribute='end_time') %}
       <tr>
+        <th>Status</th>
+        <th>Name</th>
+        <th></th> <!-- Spacing. -->
+        <th>Started</th>
+        <th></th> <!-- Spacing. -->
+        <th>Ran for</th>
+      </tr>
+      <tr>
+    {% for build in finished_builds %}
         <td><span class="{{ build.status }}-icon"></span></td>
-        <td><span class="build-name">{{ build.name }}</span></td>
-        <td><span class="build-end-date">Finished {{ display_end_time(build) }}</span></td>
-        <td><span class="build-duration">Ran for {{ display_build_duration(build) }}</span></td>
+
+        <td><a href="log/{{ build.path }}" class="log-link"><span class="build-name">
+          {{ build.name }}
+        </span></a></td>
+
+        <td></td> <!-- Spacing -->
+
+        <td><span class="build-start-time">
+          {{ display_start_time(build) }}
+        </span></td>
+
+        <td></td> <!-- Spacing -->
+
+        <td><span class="build-duration">
+          {{ display_build_duration(build)|safe }}
+        </span></td>
+
       </tr>
     {% endfor %}
     </table>
+
+
   </body>
 </html>
