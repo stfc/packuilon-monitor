@@ -1,4 +1,4 @@
-from log_parser import BuildInfo
+from parse_log import BuildInfo
 import datetime
 import humanize
 

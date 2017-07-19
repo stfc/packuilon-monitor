@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
-from log_parser import BuildInfo, get_builds, get_log
-from build_display import *
+from parse_log import BuildInfo, get_builds, get_log
+from display_build import *
 from flask import Flask, render_template
 from ansi2html import Ansi2HTMLConverter
 import sys
