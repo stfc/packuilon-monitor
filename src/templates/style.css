@@ -12,9 +12,9 @@ tr:nth-child(3) {
     padding: 50px;
 }
 
-/* body { */
-/*     padding-left: 30%; */
-/* } */
+body {
+    margin: 5% 10%;
+}
 
 a.log-link {
     color: #2A5DB0;
@@ -22,7 +22,7 @@ a.log-link {
 }
 
 a.log-link:visited {
-    color: inherit;
+    color: #2A5DB0;
 }
 
 span.passed-icon {

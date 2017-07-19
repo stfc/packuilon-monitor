@@ -1,7 +1,8 @@
 #!/usr/bin/env python2
 
-from parse_log import BuildInfo, get_builds, get_log
+from parse_log import BuildInfo, get_builds
 from display_build import *
+from display_log import display_log
 from flask import Flask, render_template
 from ansi2html import Ansi2HTMLConverter
 import sys
@@ -31,14 +32,19 @@ def monitor():
 
 @app.route('/log/<logname>')
 def log(logname):
-    conv = Ansi2HTMLConverter()
-    return conv.convert(get_log(LOGROOT, logname))
+    return render_template('log.html',
+                           body=display_log(logname))
 
 @app.route('/css/style.css')
-def style():
+def monitor_style():
     return render_template('style.css',
         base_font_family = '"Lucida Sans Typewriter", "Lucida Console", monospace',
         icon_font_size = '20px')
+
+@app.route('/css/log.css')
+def log_style():
+    return render_template('log.css',
+        base_font_family = '"Lucida Sans Typewriter", "Lucida Console", monospace')
 
 if __name__ == '__main__':
     # WARNING! Debug mode means the server will accept arbitrary Python code!
