@@ -1,9 +1,9 @@
 #!/usr/bin/env python2
 
-from logparser import *
+from log_parser import BuildInfo, get_builds
 from build_display import *
-from flask import render_template
-from flask import Flask
+from flask import Flask, render_template
+
 app = Flask(__name__)
 
 @app.route('/')
