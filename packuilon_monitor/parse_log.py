@@ -2,7 +2,7 @@
 
 import re
 import os
-from get_log import get_log, log_files
+from get_log import get_log, log_files, get_log_root_dir
 from collections import namedtuple
 
 # The build info is a 5-tuple comprising:
@@ -20,29 +20,15 @@ BuildInfo = namedtuple('BuildInfo',
                        ('path', 'name', 'start_time', 'status', 'end_time', 'exit_code'))
 
 
-_status_line_matcher = re.compile(r'^rabbit2packer: Build finished at (\d+) \(epoch\) with exit code (\d+)$')
+_finished_line_matcher = re.compile(r'^rabbit2packer: Build finished at (\d+) \(epoch\) with exit code (\d+)$')
 _cancelled_line_matcher = re.compile(r'^Cleanly cancelled builds after being interrupted.$')
 
 # FIXME: rewrite to return a dict of information gleaned, then rewrite the
 # BuildInfo constructors at the bottom to use `if X in Y: ...` to test the
 # presence of keys.
-def match_status_line(line):
-    '''Match a line of a build log for finish time and exit code.
-
-    >>> match_status_line('rabbit2packer: Build finished at 1500000000 (epoch) with exit code 1')
-    (1500000000, 1)
-    >>> match_status_line('rabbit2packer: Build finished at 42 (epoch) with exit code 0')
-    (42, 0)
-    >>> match_status_line('rabbit2packer: Build finished at 2000000000000000 (epoch) with exit code 42')
-    (2000000000000000, 42)
-    >>> match_status_line('hare2packer: Build finished at 1500000000 (epoch) with exit code 1')
-    False
-    >>> match_status_line('rabbit2packer: Build finished at -99000 (epoch) with exit code 1')
-    False
-    >>> match_status_line('rabbit2packer: Build finished at 99000 (epoch) with exit code -53')
-    False
-    '''
-    m = re.match(_status_line_matcher, line)
+def parse_status_line(line):
+    '''Match a line of a build log for finish time and exit code.'''
+    m = re.match(_finished_line_matcher, line)
     if m:
         (t, e) = m.group(1,2)
         return (int(t), int(e))
@@ -52,20 +38,8 @@ def match_status_line(line):
         return False
 
 _filename_info_matcher = re.compile(r'^([^.]+\.[^.]+)\.json\.(\d+)\.log')
-def match_filename_info(name):
-    '''Extract build name and start time from name of log file as a 2-tuple (str, int)
-
-    >>> match_filename_info('inventory-sl6x.unmanaged.json.1500000000.log')
-    ('inventory-sl6x.unmanaged', 1500000000)
-    >>> match_filename_info('freddie.mercury.json.1946.log')
-    ('freddie.mercury', 1946)
-    >>> match_filename_info('freddie.mercury.json.-1946.log')
-    False
-    >>> match_filename_info('f.r.e.d.d.i.e.m.e.r.c.u.r.y.json.1946.log')
-    False
-    >>> match_filename_info('..json..log')
-    False
-    '''
+def parse_filename_info(name):
+    '''Extract build name and start time from name of log file as a 2-tuple (str, int).'''
     m = re.match(_filename_info_matcher, name)
     if m:
         (n, t) = m.group(1,2)
@@ -81,17 +55,10 @@ def get_last_line(filepath):
             y = f.readline()
         return x
 
-def get_log_info(filepath):
-    '''Scrape the build info from a named log file as a BuildInfo named tuple.
 
-    The following examples make use of the stubbed log files in test/log.
-
-    >>> get_log_info('../test/log/inventory-sl6x.managed.json.1499871318.log')
-    BuildInfo(path='inventory-sl6x.managed.json.1499871318.log', name='inventory-sl6x.managed', start_time=1499871318, status='passed', end_time=1499872060, exit_code=0)
-    '''
-    filename = os.path.basename(filepath)
-    name_info = match_filename_info(filename)
-    stat_info = match_status_line(get_last_line(filepath))
+def parse_log_info(filename, line):
+    name_info = parse_filename_info(filename)
+    stat_info = parse_status_line(line)
     if name_info:
         (n, t0) = name_info
         if stat_info:
@@ -103,11 +70,19 @@ def get_log_info(filepath):
         else:
             return BuildInfo(filename, n, t0, 'running', None, None)
     else:
-        raise Exception("Couldn't parse \"%s\" for build name and start time info." % filename)
+        None
 
-def get_builds(log_root):
+
+def get_log_info(filepath):
+    '''Scrape the build info from a named log file as a BuildInfo named tuple.'''
+    filename = os.path.basename(filepath)
+    last_line = get_last_line(filepath)
+    return parse_log_info(filename, last_line)
+
+
+def get_builds():
     '''Return a list of all the build information given the directory of the logs.'''
-    return [get_log_info(log) for log in log_files(log_root)]
+    return filter(lambda b: b != None, [get_log_info(log) for log in log_files(get_log_root_dir())])
 
 # run tests
 if __name__ == '__main__':

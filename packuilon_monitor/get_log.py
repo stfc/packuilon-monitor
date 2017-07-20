@@ -1,10 +1,14 @@
-#!/usr/bin/env python2
-
 import os
+from ConfigParser import RawConfigParser
+
+
+PACKER_CONFIG = '/etc/packer-utils/config.ini'
 
 
 def get_log_root_dir():
-    return "/home/htv52873/code/packuilon-monitor/test/log"
+    configparser = RawConfigParser()
+    configparser.read(PACKER_CONFIG)
+    return configparser.get('rabbit2packer','LOG_DIR')
 
 
 def get_log(log_name):

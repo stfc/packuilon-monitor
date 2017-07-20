@@ -20,7 +20,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def monitor():
-    builds = get_builds(get_log_root_dir())
+    builds = get_builds()
     running_builds = filter(lambda b: b.status == 'running', builds)
     finished_builds = filter(lambda b: b.status != 'running', builds)
     return render_template(
@@ -55,7 +55,7 @@ def log_style():
         'log.css',
         base_font_family=(
             '"Lucida Sans Typewriter",'
-            '"Lucida Console"'
+            '"Lucida Console",'
             'monospace'))
 
 
