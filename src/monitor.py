@@ -20,10 +20,8 @@ LOGROOT = '/home/htv52873/code/packuilon-monitor/test/log'
 @app.route('/')
 def monitor():
     builds = get_builds(LOGROOT)
-    running_builds = filter(lambda b: b.status == 'running',
-                            builds)
-    finished_builds = filter(lambda b: b.status != 'running',
-                            builds)
+    running_builds = filter(lambda b: b.status == 'running', builds)
+    finished_builds = filter(lambda b: b.status != 'running', builds)
     return render_template('monitor.html',
                            running_builds=running_builds,
                            finished_builds=sort_finished_builds(finished_builds),
@@ -35,9 +33,9 @@ def log(logname):
     return render_template('log.html',
                            body=display_log(logname))
 
-@app.route('/css/style.css')
+@app.route('/css/monitor.css')
 def monitor_style():
-    return render_template('style.css',
+    return render_template('monitor.css',
         base_font_family = '"Lucida Sans Typewriter", "Lucida Console", monospace',
         icon_font_size = '20px')
 
