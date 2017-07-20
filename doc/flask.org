@@ -18,3 +18,16 @@
          return render_template('templates/style.css',
              base_font_family = 'Lucida Console, monospace')
    #+END_SOURCE
+** Deleting surrounding whitespace from a template expression
+*** Problem
+    You want to indent your templating code properly, but you also don't want to
+    insert unnecessary whitespace into the HTML which might affect the layout.
+*** Solution
+    If you have a template expression,
+    : {{ EXPRESSION }}
+    you can get Jinja to delete all the whitespace to the left and/or right of
+    the template by using a `-' after the second open brace or before the first
+    close brace. For example:
+    : {{- EXPR }}
+    : {{ EXPR -}}
+    : {{- EXPR -}}
