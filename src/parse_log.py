@@ -2,6 +2,7 @@
 
 import re
 import os
+from get_log import get_log, log_files
 from collections import namedtuple
 
 # The build info is a 5-tuple comprising:
@@ -18,12 +19,13 @@ from collections import namedtuple
 BuildInfo = namedtuple('BuildInfo',
                        ('path', 'name', 'start_time', 'status', 'end_time', 'exit_code'))
 
-# FIXME: will define this in the main package, not here.
-## LOGDIR = '/etc/packer-utils/log/'
 
 _status_line_matcher = re.compile(r'^rabbit2packer: Build finished at (\d+) \(epoch\) with exit code (\d+)$')
 _cancelled_line_matcher = re.compile(r'^Cleanly cancelled builds after being interrupted.$')
 
+# FIXME: rewrite to return a dict of information gleaned, then rewrite the
+# BuildInfo constructors at the bottom to use `if X in Y: ...` to test the
+# presence of keys.
 def match_status_line(line):
     '''Match a line of a build log for finish time and exit code.
 
@@ -71,15 +73,6 @@ def match_filename_info(name):
     else:
         return False
 
-def log_files(dir):
-    '''Return a list of files/dirs in a directory, with full paths.
-
-    This is as opposed to os.listdir(), which gives you the relative paths of
-    the files.
-    '''
-    return map(lambda f: os.path.join(dir, f),
-               os.listdir(dir))
-
 def get_last_line(filepath):
     y = None
     with open(filepath, 'r') as f:
@@ -88,17 +81,13 @@ def get_last_line(filepath):
             y = f.readline()
         return x
 
-def get_log(log_root, log_name):
-    with open(os.path.join(log_root, log_name), 'r') as f:
-        return f.read()
-
 def get_log_info(filepath):
     '''Scrape the build info from a named log file as a BuildInfo named tuple.
 
     The following examples make use of the stubbed log files in test/log.
 
-    >>> get_log_info('./test/log/inventory-sl6x.managed.json.1499871318.log')
-    BuildInfo(name='inventory-sl6x.managed', start_time=1499871318, status='passed', end_time=1499872060, exit_code=0)
+    >>> get_log_info('../test/log/inventory-sl6x.managed.json.1499871318.log')
+    BuildInfo(path='inventory-sl6x.managed.json.1499871318.log', name='inventory-sl6x.managed', start_time=1499871318, status='passed', end_time=1499872060, exit_code=0)
     '''
     filename = os.path.basename(filepath)
     name_info = match_filename_info(filename)
