@@ -1,3 +1,11 @@
+h1 {
+    font-family: {{ base_font_family }};
+    color: gray;
+    font-size: 1em;
+    margin-top: 30px;
+    margin-left: 10%;
+}
+
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -7,6 +15,7 @@ pre {
     display: block;
     padding: 9.5px;
     margin: 5% 10%;
+    margin-top: 30px;
     font-size: 13px;
     line-height: 1.428571429;
     color: #333;

@@ -6,16 +6,33 @@
   </head>
   <body>
 
+    <h1>Packuilon Builds</h1>
 
     <table id="running">
-    {% for build in running_builds|sort(reverse=True, attribute='start_time') %}
       <tr>
-        <td><span class="running-icon"></span></td>
-        <td><span class="build-name">
-          {{ build.name }}.{{ build.start_time }}
-        </span></td>
+        <th>Status</th>
+        <th>Name</th>
+        <th></th> <!-- Spacing. -->
+        <th>Started</th>
       </tr>
-    {% endfor %}
+
+      {% for build in running_builds %}
+      <tr>
+        <td class="status">
+          <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+          </div>
+          <!-- <span class="running-icon"></span> --> </td>
+        <td><a href="/log/{{ build.path }}" class="log-link"><span class="build-name">
+          {{ build.name }}
+        </span></a></td>
+        <td></td>
+        <td class="build-start-time">
+          {{ display_start_time(build) }}
+        </td>
+      </tr>
+      {% endfor %}
     </table>
 
 
@@ -29,10 +46,10 @@
         <th>Ran for</th>
       </tr>
       <tr>
-    {% for build in finished_builds %}
-        <td><span class="{{ build.status }}-icon"></span></td>
+        {% for build in finished_builds %}
+        <td class="status"><span class="{{ build.status }}-icon"></span></td>
 
-        <td><a href="log/{{ build.path }}" class="log-link"><span class="build-name">
+        <td><a href="/log/{{ build.path }}" class="log-link"><span class="build-name">
           {{ build.name }}
         </span></a></td>
 
@@ -49,7 +66,7 @@
         </span></td>
 
       </tr>
-    {% endfor %}
+      {% endfor %}
     </table>
 
 
