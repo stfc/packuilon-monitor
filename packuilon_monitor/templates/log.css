@@ -1,9 +1,39 @@
 h1 {
     font-family: {{ base_font_family }};
-    color: gray;
+    color: #757575;
     font-size: 1em;
     margin-top: 30px;
+}
+
+.copyable {
+    -webkit-user-select: all;
+    -moz-user-select: all;
+    -ms-user-select: all;
+    user-select: all;
+}
+
+code {
+    font-family: {{ base_font_family }};
+    font-size: 0.8em;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+ul {
+    font-family: {{ base_font_family }};
+    font-size: 0.9em;
+}
+
+p {
+    font-family: {{ base_font_family }};
+    font-size: 0.9em;
+}
+
+div#container {
     margin-left: 10%;
+    margin-right: 10%;
 }
 
 pre {
@@ -14,7 +44,7 @@ pre {
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
     display: block;
     padding: 9.5px;
-    margin: 5% 10%;
+/*    margin: 5% 10%; */
     margin-top: 30px;
     font-size: 13px;
     line-height: 1.428571429;

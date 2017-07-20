@@ -5,9 +5,17 @@
     <link href="/css/log.css" rel="stylesheet"/>
   </head>
   <body>
+    <div id="container">
     <h1>{{ name }}</h1>
+    <p>To delete this log:</p>
+    <ul>
+      <li><code class="copyable">ssh root@vm318.nubes.stfc.ac.uk</code> or
+       <code><i>you</i><span class="copyable">@vm318.nubes.stfc.ac.uk</span></code> in Putty</li>
+      <li><code class="copyable">sudo rm /etc/packer-utils/log/{{ name }}</code></li>
+    </ul>
     <pre>
     {{- body|safe -}}
     </pre>
+    </div>
   </body>
 </html>
