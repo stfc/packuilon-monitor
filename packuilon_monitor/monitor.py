@@ -59,6 +59,10 @@ def log_style():
             'monospace'))
 
 
-if __name__ == '__main__':
+def main():
     # WARNING! Debug mode means the server will accept arbitrary Python code!
     app.run('0.0.0.0', 5000, debug=True)
+
+
+if __name__ == '__main__':
+    main()

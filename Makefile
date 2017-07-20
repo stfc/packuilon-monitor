@@ -1,8 +1,8 @@
 PYTHON=python2
+PIP=pip
 clean:
-	rm -f src/*.pyc test/*.pyc
+	rm -f packuilon_monitor/*.pyc test/*.pyc
 
-run:
-	$(PYTHON) src/monitor.py
-
-.PHONY: clean run
+install:
+	sudo $(PIP) install -e .
+.PHONY: clean install
