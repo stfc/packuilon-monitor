@@ -21,6 +21,13 @@ setup(
         'ansi2html',
         'flask'
     ],
+    setup_requires=[
+        'pytest-runner'
+    ],
+    tests_require=[
+        'pytest',
+        'hypothesis'
+    ],
     python_requires='>=2.7, <3',
     ## package_data=XXX
     entry_points={

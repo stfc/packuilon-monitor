@@ -1,3 +1,6 @@
 *.py[cod]
 __pycache__/
 *.egg-info
+.hypothesis/
+.eggs/
+.cache/
