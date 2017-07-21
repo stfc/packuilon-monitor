@@ -15,7 +15,7 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 
-app = Flask(__name__)
+app = Flask('packuilon_monitor')
 
 
 @app.route('/')
