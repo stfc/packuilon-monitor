@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Packuilon</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      a {
+        text-decoration: none;
+        color: rgb(249, 38, 114);
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Monitoring Packuilon builds
+
+---
+
+# Agenda
+
+- What is Packuilon?
+- What's the problem?
+- What's the solution?
+- Interesting tools.
+- Next steps?
+
+---
+
+# What is Packuilon?
+
+**Packer** + **Aquilon** = **Packuilon**
+
+- Packuilon watches for newly compiled profiles in Aquilon
+- Checks if the profile has changed
+- Makes a Packer build file for the (personality + OS) combo
+- Triggers a Packer build
+- Updates the memberships of the created image
+
+.footnote[.red.bold[*] _Taken from Tom's slides about Packuilon._]
+
+---
+
+# What's the problem?
+
+Well, let's force Packuilon to run a build.
+~~~
+$ ./packuilon.py --personality inventory
+~~~
+---
+
+# What's the problem?
+
+Well, let's force Packuilon to run a build.
+~~~
+$ ./packuilon.py --personality inventory
+~~~
+We get some JSON:
+~~~json
+{'metadata': ...,
+ 'system':
+   {'personality': {'name': 'inventory'}, ...,
+ 'os':
+   {'distribution': {'name': 'sl'}, ...}}}
+~~~
+
+---
+
+# What's the problem?
+
+Well, let's force Packuilon to run a build.
+~~~
+$ ./packuilon.py --personality inventory
+~~~
+We get some JSON:
+~~~json
+{'metadata': ...,
+ 'system':
+   {'personality': {'name': 'inventory'}, ...,
+ 'os':
+   {'distribution': {'name': 'sl'}, ...}}}
+~~~
+
+...
+
+---
+
+# What's the problem?
+
+Well, let's force Packuilon to run a build.
+~~~
+$ ./packuilon.py --personality inventory
+~~~
+We get some JSON:
+~~~json
+{'metadata': ...,
+ 'system':
+   {'personality': {'name': 'inventory'}, ...,
+ 'os':
+   {'distribution': {'name': 'sl'}, ...}}}
+~~~
+
+... *and nothing else!*
+
+The only way to find out if a build had finished was to look at the log files manually.
+---
+
+# What's the solution?
+
+[A web interface.](vm318.nubes.stfc.ac.uk:5000)
+
+---
+
+# Interesting tools.
+
+- Haskell
+- setuptools
+- Flask
+- humanize
+- ansi2html
+- Pytest & Hypothesis
+
+---
+
+# Haskell?!
+
+_Very easy to do constant-memory streaming._
+ - important so you don't read the entire log file into memory
+
+_Type-checker makes it harder to write incorrect code._
+ - side-effects are contained within the `IO` type – so debugging and testing becomes much easier.
+
+_Incredibly abstract, yet lightning fast._
+  - because Haskell is ‘pure’, the compiler can make huge optimisations
+
+  - Haskell's Warp server does 81,244 RPS
+  - Python's Django does 2,455 RPS
+
+_Rich package ecosystem._
+ - Hackage is nowhere near CPAN – yet!
+
+**Look up _Real World Haskell_ for a practical introduction to Haskell.**
+
+
+---
+
+# Layout
+
+~~~
+packuilon-monitor
+├── setup.py
+├── pytest.ini
+├── setup.cfg
+├── packuilon_monitor
+│   ├── __init__.py
+│   ├── monitor.py
+│   ├── ...
+│   └── templates
+│       ├── log.css
+│       ├── log.html
+│       ├── monitor.css
+│       └── monitor.html
+└── test
+    ├── test_parse_log.py
+    └── log
+        ├── inventory-sl6x.managed.json.1499871318.log
+        └── ...
+~~~
+
+---
+
+# setuptools
+
+Makes installing `packuilon-monitor` as easy as
+>    `$ sudo pip install .`
+
+from inside the cloned repo.
+
+
+---
+
+# Flask
+
+**Flask** is a simple web framework.
+
+~~~python
+from flask import Flask, render_template
+app = Flask('packuilon_monitor')
+
+
+@app.route('/')
+def monitor():
+    builds = get_builds()
+    running_builds = filter(lambda b: b.status == 'running', builds)
+    finished_builds = filter(lambda b: b.status != 'running', builds)
+    return render_template(
+        'monitor.html',
+        running_builds         = sort_running_builds(running_builds),
+        finished_builds        = sort_finished_builds(finished_builds),
+        display_start_time     = display_start_time,
+        display_build_duration = display_build_duration)
+
+~~~
+
+---
+
+# Jinja
+
+Flask uses **Jinja** to generate HTML with *templates*.
+
+~~~html
+    <table id="running">
+      ... <!-- table headers -->
+      {% for build in running_builds %}
+      <tr>
+        <td class="status">
+            ... <!-- CSS "running" animation -->
+        </td>
+
+        <td><a href="/log/{{ build.path }}" class="log-link">
+          <span class="build-name">
+            {{ build.name }}
+          </span></a></td>
+
+        <td class="build-start-time">
+          {{ display_start_time(build) }}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+~~~
+---
+
+# humanize
+
+A PyPI package which translates machine-readable values (dates, numbers, time differences, etc.) into fuzzy, intuitive strings.
+
+|unreadable||readable|
+|-|-|-|
+|`983899` (seconds elapsed) |→| `"11 days ago"`|
+|`17283940` (unitless) |→| `"17.3 million"`|
+|`1500546243` (epoch) |→| `"yesterday"`|
+
+---
+
+# ansi2html
+
+PyPI package which converts Ansi colour codes (etc.) to HTML – which can then be customised by editing the CSS.
+
+Currently is very difficult to customise! I copied the output CSS into `log.css` and edited it by hand.
+
+[An example of the output.](http://vm318.nubes.stfc.ac.uk:5000/log/inventory-sl6x-x86_64.managed.json.1499943808.log)
+
+---
+
+# Hypothesis
+
+*Property-based testing* for Python (based on Haskell's QuickCheck library). Integrates with the Pytest runner.
+
+
+~~~python
+from hypothesis import given, example
+from hypothesis.strategies import integers
+
+@example(42, 13)
+@given(integers(0), integers(0))
+def test_parse_valid_status_line(t, e):
+    line = ('rabbit2packer: Build finished at ' +
+            str(t) +
+            ' (epoch) with exit code ' +
+            str(e))
+    assert pm.parse_status_line(line) == (t, e)
+~~~
+
+If it finds a counterexample:
+
+> `Falsifying example: parse_status_line(...)`
+
+Hypothesis tries to *shrink* its counterexamples.
+
+---
+
+# Next steps?
+
+**Big things**
+- Live updates
+ - Flask + SocketIO = Flask-SocketIO
+ - Tailing log files
+ - Threading
+- Ripping out the monitoring interface
+
+**Small things**
+- Back button on log view
+- ‘Always-scroll-to-bottom’ (for live output)
+
+---
+
+# Questions?
+
+You can find these slides in the `doc/` folder of:
+- `github.com/daantjie/packuilon-monitor` (will be moved to `stfc`)
+
+Other links:
+- [`flask.pocoo.org`](flask.pocoo.org)
+- [`pypi.python.org/pypi/humanize`](pypi.python.org/pypi/humanize)
+- [`realworldhaskell.com/read`](realworldhaskell.com/read)
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
